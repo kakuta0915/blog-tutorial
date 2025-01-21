@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { GetStaticProps } from "next";
 import { client } from "../../libs/client";
+import styles from "../../styles/index.module.scss";
 
 interface Blog {
   id: string;
@@ -13,7 +14,7 @@ interface HomeProps {
 
 export default function Home({ blogs }: HomeProps) {
   return (
-    <div>
+    <div className={styles.container}>
       <h1>ブログ記事一覧</h1>
       <ul>
         {blogs.map((blog) => (

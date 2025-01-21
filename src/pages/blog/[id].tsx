@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { client } from "../../../libs/client";
+import styles from "../../../styles/index.module.scss";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // microCMSから記事データを取得
@@ -44,13 +45,14 @@ type BlogProps = {
 
 const Blog: FC<BlogProps> = ({ blog }) => {
   return (
-    <div>
-      <h1>{blog.title}</h1>
-      <p>{blog.publishedAt}</p>
+    <div className={styles.main}>
+      <h1 className={styles.title}>{blog.title}</h1>
+      <p className={styles.publishedAt}>{blog.publishedAt}</p>
       <div
         dangerouslySetInnerHTML={{
           __html: blog.body,
         }}
+        className={styles.post}
       />
     </div>
   );
